@@ -6,8 +6,10 @@
 name: Move assigned pull requests into To do
 
 on:
-  issue:
-    types: [assigned]
+  issues:
+    types: 
+      - assigned
+  
 
 jobs:
   automate-project-columns:
