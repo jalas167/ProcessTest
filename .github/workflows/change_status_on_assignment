@@ -19,4 +19,4 @@ jobs:
         with:
           project: TestProject
           column: Owned
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.TOKEN_NAME }}
