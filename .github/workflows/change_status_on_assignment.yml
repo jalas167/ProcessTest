@@ -1,12 +1,15 @@
 name: Add a new GitHub Project card linked to a GitHub issue to the specified project column
-on: [issues]
+on:
+  issues:
+    types:
+    - assigned
 jobs:
   github-actions-automate-projects:
     runs-on: ubuntu-latest
     steps:
     - name: add-new-issues-to-repository-based-project-column
       uses: docker://takanabe/github-actions-automate-projects:v0.0.1
-      if: github.event_name == 'issues' && github.event.action == 'assigned'
+      if: github.event.action == 'assigned'
       env:
         GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         GITHUB_PROJECT_URL: https://github.com/users/jalas167/projects/4
