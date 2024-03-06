@@ -42,16 +42,17 @@ jobs:
     runs-on: ubuntu-latest
     # runs-on: goth2 
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
 
       - name: Prepare providers and requestor
-        uses: ./../.github/actions/prepare-env
+        uses: ./../.github/actions/prepare_env
 
       - name: Run the Examples tests
         run: docker exec -t docker-requestor-1 /bin/sh -c "cd /golem-js && npm run test:examples -- --exitOnError"
 
       - name: Cleanup test environment
-        uses: ./../.github/actions/clean-env
+        uses: ./../.github/actions/clean_env
         with:
           type: "examples"
         
