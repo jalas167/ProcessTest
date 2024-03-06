@@ -37,5 +37,20 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
+  run-examples-tests:
+    name: Run Examples tests
+    runs-on: goth2
+    steps:
+      - uses: actions/checkout@v3
 
+      - name: Prepare providers and requestor
+        uses: ./.github/actions/prepare-tests
+
+      - name: Run the Examples tests
+        run: docker exec -t docker-requestor-1 /bin/sh -c "cd /golem-js && npm run test:examples -- --exitOnError"
+
+      - name: Cleanup test environment
+        uses: ./.github/actions/cleanup-tests
+        with:
+          type: "examples"
         
