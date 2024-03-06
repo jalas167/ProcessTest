@@ -9,7 +9,7 @@ on:
         default: "v0.13.2"
   
 jobs:
-  Explore-GitHub-Actions:
+  Run whitelist DNS check:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
