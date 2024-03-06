@@ -45,6 +45,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: list folder
+        run: ls /home/runner/work/
+        
       - name: Prepare providers and requestor
         uses: ./../.github/actions/prepare_env
 
