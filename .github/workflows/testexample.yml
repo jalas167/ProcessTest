@@ -51,7 +51,7 @@ jobs:
         run: docker exec -t docker-requestor-1 /bin/sh -c "cd /golem-js && npm run test:examples -- --exitOnError"
 
       - name: Cleanup test environment
-        uses: ./../.github/actions/cleanup-env
+        uses: ./../.github/actions/clean-env
         with:
           type: "examples"
         
