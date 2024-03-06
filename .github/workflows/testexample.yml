@@ -7,9 +7,21 @@ on:
         description: "Provider version (e.g., v0.13.2 or pre-rel-v0.13.1)"
         required: false
         default: "v0.13.2"
+      requestor_version:
+        description: "Requestor version (e.g., v0.13.2 or pre-rel-v0.13.1)"
+        required: false
+        default: "v0.13.2"
+      provider_wasi_version:
+        description: "Provider WASI version (e.g., v0.2.2)"
+        required: false
+        default: "v0.2.2"
+      provider_vm_version:
+        description: "Provider VM version (e.g., v0.3.0)"
+        required: false
+        default: "v0.3.0"
   
 jobs:
-  Run whitelist DNS check:
+  Run_whitelist_DNS_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
