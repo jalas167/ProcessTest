@@ -13,9 +13,9 @@ runs:
       if: always()
       run: |
         mkdir log-output
-        docker compose -f tests/docker/docker-compose.yml logs provider-1 > log-output/${{inputs.type}}-provider-1.log
-        docker compose -f tests/docker/docker-compose.yml logs provider-2 > log-output/${{inputs.type}}-provider-2.log
-        docker compose -f tests/docker/docker-compose.yml logs requestor > log-output/${{inputs.type}}-requestor.log
+        docker compose -f monitor/docker/docker-compose.yml logs provider-1 > log-output/${{inputs.type}}-provider-1.log
+        docker compose -f monitor/docker/docker-compose.yml logs provider-2 > log-output/${{inputs.type}}-provider-2.log
+        docker compose -f monitor/docker/docker-compose.yml logs requestor > log-output/${{inputs.type}}-requestor.log
 
     - name: Upload provider output and logs
       uses: actions/upload-artifact@v3
