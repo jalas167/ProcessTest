@@ -32,7 +32,8 @@ RUN cd ${YA_DIR_INSTALLER} \
     && tar -zxvf ya-runtime-wasi-linux-${YA_WASI_VERSION}.tar.gz \
     && tar -zxvf ya-runtime-vm-linux-${YA_VM_VERSION}.tar.gz
 
-RUN find golem-provider-linux-${YA_CORE_PROVIDER_VERSION} -executable -type f -exec cp {} ${YA_DIR_BIN} \; \
+RUN cd ${YA_DIR_INSTALLER} \
+    && find golem-provider-linux-${YA_CORE_PROVIDER_VERSION} -executable -type f -exec cp {} ${YA_DIR_BIN} \; \
     && cp -R golem-provider-linux-${YA_CORE_PROVIDER_VERSION}/plugins/* ${YA_DIR_PLUGINS} \
     && cp -R ya-runtime-wasi-linux-${YA_WASI_VERSION}/* ${YA_DIR_PLUGINS} \
     && cp -R ya-runtime-vm-linux-${YA_VM_VERSION}/* ${YA_DIR_PLUGINS} \
