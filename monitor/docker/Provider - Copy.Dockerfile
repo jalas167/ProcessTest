@@ -23,16 +23,15 @@ RUN apt-get update -q \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p ${YA_DIR_PLUGINS} \
-    && mkdir ${YA_DIR_INSTALLER}
-RUN cd ${YA_DIR_INSTALLER} \
+    && mkdir ${YA_DIR_INSTALLER} \
+    && cd ${YA_DIR_INSTALLER} \
     && wget -q "https://github.com/golemfactory/yagna/releases/download/${YA_CORE_PROVIDER_VERSION}/golem-provider-linux-${YA_CORE_PROVIDER_VERSION}.tar.gz" \
     && wget -q "https://github.com/golemfactory/ya-runtime-wasi/releases/download/${YA_WASI_VERSION}/ya-runtime-wasi-linux-${YA_WASI_VERSION}.tar.gz" \
     && wget -q "https://github.com/golemfactory/ya-runtime-vm/releases/download/${YA_VM_VERSION}/ya-runtime-vm-linux-${YA_VM_VERSION}.tar.gz" \
     && tar -zxvf golem-provider-linux-${YA_CORE_PROVIDER_VERSION}.tar.gz \
     && tar -zxvf ya-runtime-wasi-linux-${YA_WASI_VERSION}.tar.gz \
-    && tar -zxvf ya-runtime-vm-linux-${YA_VM_VERSION}.tar.gz
-
-RUN find golem-provider-linux-${YA_CORE_PROVIDER_VERSION} -executable -type f -exec cp {} ${YA_DIR_BIN} \; \
+    && tar -zxvf ya-runtime-vm-linux-${YA_VM_VERSION}.tar.gz \
+    && find golem-provider-linux-${YA_CORE_PROVIDER_VERSION} -executable -type f -exec cp {} ${YA_DIR_BIN} \; \
     && cp -R golem-provider-linux-${YA_CORE_PROVIDER_VERSION}/plugins/* ${YA_DIR_PLUGINS} \
     && cp -R ya-runtime-wasi-linux-${YA_WASI_VERSION}/* ${YA_DIR_PLUGINS} \
     && cp -R ya-runtime-vm-linux-${YA_VM_VERSION}/* ${YA_DIR_PLUGINS} \
