@@ -19,7 +19,7 @@ runs:
     - name: Build the docker containers
       shell: bash
       run: |
-        docker compose -f tests/docker/docker-compose.yml build \
+        docker compose -f monitor/docker/docker-compose.yml build \
           --build-arg UBUNTU_VERSION=22.04 \
           --build-arg YA_CORE_PROVIDER_VERSION=${PROVIDER_VERSION} \
           --build-arg YA_CORE_REQUESTOR_VERSION=${REQUESTOR_VERSION} \
@@ -37,7 +37,7 @@ runs:
       shell: bash
       run: |
         sleep 10
-        docker exec -t docker-requestor-1 /bin/sh -c "/golem-js/monitor/docker/fundRequestor.sh"
+        docker exec -t docker-requestor-1 /bin/sh -c "/monitor/docker/fundRequestor.sh"
 
     - name: Install and build the SDK in the docker container
       shell: bash
